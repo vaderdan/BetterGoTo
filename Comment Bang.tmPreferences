@@ -15,9 +15,10 @@
 				s/^\s*\S+\s*//g		# strip opening punctuation + spacing
 				s/(-{2,3}>|\*{1,}\/)\s*$//g	# strip common comment endings: (HTML + CF, C-Style) + spacing
 				s/^[^!].*//g		# remove all comments that DON'T begin with a bang
-				s/^(!-+).*/··································································/g		# replace bang with ruler (if applicable) and a \n
+				s/\/\/([^\n]*?\n)/ \t $1/g   #remove all // on multiline
+				s/^(!-+)[^\n]*?/··································································/g		# replace bang with ruler (if applicable) and a \n
 				s/^!\s*/!       /g		# replace bang and subsequent spaces with [!] and several (sure?) spaces
-				s/^(.*?)\n.*/$1\n/g		# keep only 1st line (in case of multiline comment) and a \n
+				#s/^((\/\/)?[^\n]*\n)*?/$0\n/g		# keep only 1st line (in case of multiline comment) and a \n
 			</string>
 		</dict>
 		<key>uuid</key>
